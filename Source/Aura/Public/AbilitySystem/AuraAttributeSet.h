@@ -7,16 +7,18 @@
 
 /** ---------------------------------------------- */
 
-/**
- * This defines a set of helper functions for accessing and initializing attributes, to avoid having to manually write these functions.
- * It would creates the following functions, for attribute Health
+/** ATTRIBUTE_ACCESSORS Description
+ *   This defines a set of helper functions for accessing and initializing attributes, 
+ *   to avoid having to manually write these functions.
+ *   It would creates the following functions, for attribute Health
  *
- *	static FGameplayAttribute UMyHealthSet::GetHealthAttribute();
- *	FORCEINLINE float UMyHealthSet::GetHealth() const;
- *	FORCEINLINE void UMyHealthSet::SetHealth(float NewVal);
- *	FORCEINLINE void UMyHealthSet::InitHealth(float NewVal);
+ *   static FGameplayAttribute UMyHealthSet::GetHealthAttribute();
+ *	 FORCEINLINE float UMyHealthSet::GetHealth() const;
+ *	 FORCEINLINE void UMyHealthSet::SetHealth(float NewVal);
+ *	 FORCEINLINE void UMyHealthSet::InitHealth(float NewVal);
  * 
- *  To use this in your game you can define something like this, and then add game-specific functions as necessary: 
+ *   To use this in your game you can define something like this, 
+ *   and then add game-specific functions as necessary: 
  */
 
  #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
@@ -66,7 +68,7 @@ public :
 	
 };
 
-/** Memo
+/** Note.
  *   Prediction : The client doesn't need to wait for the server's permission to change a value.
  *   The value can change immediately client-side and the server is informed of the change.
  *   The server can roll back changes that are invalid.
