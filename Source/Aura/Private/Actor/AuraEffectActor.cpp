@@ -1,10 +1,10 @@
-
+﻿
 #include "Actor/AuraEffectActor.h"
 
 /** ---------------------------------------------- */
 
+#include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemInterface.h"
-#include "Components/SphereComponent.h"
 
 /** ---------------------------------------------- */
 
@@ -17,38 +17,44 @@ AAuraEffectActor::AAuraEffectActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
-	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
-	SetRootComponent(Mesh);
-
-	Sphere = CreateDefaultSubobject<USphereComponent>("Sphere");
-	Sphere->SetupAttachment(GetRootComponent());
+	SetRootComponent(CreateDefaultSubobject<USceneComponent>("SceneComponent"));
 }
 
 void AAuraEffectActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	Sphere->OnComponentBeginOverlap.AddDynamic(this, &AAuraEffectActor::OnOverlap);
-	Sphere->OnComponentEndOverlap.AddDynamic(this, &AAuraEffectActor::EndOverlap);
 }
 
-void AAuraEffectActor::OnOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
+void AAuraEffectActor::ApplyEffectToTarget(AActor *Target, TSubclassOf<UGameplayEffect> GameplayEffectClass)
 {
-	//To Do : Change this to apply a Gameplay Effect. For now, using const_cast as a hack!
-	if(auto* ASCInterface = Cast<IAbilitySystemInterface>(OtherActor))
-	{
-		const auto* AuraAttributeSet = Cast<UAuraAttributeSet>(ASCInterface->GetAbilitySystemComponent()->GetAttributeSet(UAuraAttributeSet::StaticClass()));
-		
-		UAuraAttributeSet* MutableAuraAttributeSet = const_cast<UAuraAttributeSet*>(AuraAttributeSet);		
-		MutableAuraAttributeSet->SetHealth(AuraAttributeSet->GetHealth() + 25.f);
-		
-		MutableAuraAttributeSet->SetMana(AuraAttributeSet->GetMana() -25.f);
+	/** Method ① — Interface Cast
+	 * auto* ASCInterface = Cast<IAbilitySystemInterface>(Target);
+	 * if (ASCInterface)
+	 * {
+	 *     ASCInterface->GetAbilitySystemComponent();
+	 * }
+	 *
+ 	 * Works only when Target explicitly implements IAbilitySystemInterface.
+	 * Fast: direct pointer cast, minimal overhead.
+	 * Fails on indirect owners (e.g., Pawn → PlayerState). Always null-check.
+	 */
 
-		Destroy();
-	}
-}
+	/** Method ② — UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent()
+	 *
+	 * Multi-step search:
+	 *     1) Target is ASC? return.
+	 *     2) Target implements IAbilitySystemInterface? return.
+	 *     3) Target is Actor? scan components; if Pawn, follow Owner/PlayerState chain.
+	 * Broad coverage, Blueprint-friendly.
+	 * Slightly slower due to reflection lookups; still acceptable for general use.
+	 */
+	auto* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(Target);
+	if(!TargetASC) return;
 
-void AAuraEffectActor::EndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)
-{
-	
+	check(GameplayEffectClass);
+	FGameplayEffectContextHandle EffectContextHandle = TargetASC->MakeEffectContext();
+	EffectContextHandle.AddSourceObject(this);
+	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(GameplayEffectClass, 1.f, EffectContextHandle);
+	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
 }
