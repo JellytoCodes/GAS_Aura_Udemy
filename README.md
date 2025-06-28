@@ -19,10 +19,10 @@
  - 캐릭터 계층 구조·OOP 상속 설계  
  - GAS 핵심 클래스 심층 분석  
  - Attribute Set·컴포넌트 커스텀 & 복제  
- - 프라이머리/세컨더리/바이탈 스탯 계산 파이프라인
+ - Primary/Secondary/Vital 스탯 계산 파이프라인
  - Gameplay Effects / Tags 전술 활용
  - UI 아키텍처: MVC·MVVM(UE ViewModel) 적용
- - 스펠·패시브·쿨다운 구현, 인풋 재매핑
+ - Spell·Passive·Cooldown 구현,Input Remapping
  - 경험치·레벨업 시스템 + 시각 효과
  - AI: BT·EQS로 원거리/근접/소환형 행동 설계
  - 데미지 파이프라인: 타입·저항·디버프·피격 반응(넉백·스턴·도트)
