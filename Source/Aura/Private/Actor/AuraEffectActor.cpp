@@ -26,9 +26,9 @@ void AAuraEffectActor::BeginPlay()
 	
 }
 
-void AAuraEffectActor::ApplyEffectToTarget(AActor *Target, TSubclassOf<UGameplayEffect> GameplayEffectClass)
+void AAuraEffectActor::ApplyEffectToTarget(AActor *TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass)
 {
-	/** Method ① — Interface Cast
+	/** Interface Cast
 	 * auto* ASCInterface = Cast<IAbilitySystemInterface>(Target);
 	 * if (ASCInterface)
 	 * {
@@ -40,7 +40,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor *Target, TSubclassOf<UGameplay
 	 * Fails on indirect owners (e.g., Pawn → PlayerState). Always null-check.
 	 */
 
-	/** Method ② — UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent()
+	/** UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent()
 	 *
 	 * Multi-step search:
 	 *     1) Target is ASC? return.
@@ -49,7 +49,8 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor *Target, TSubclassOf<UGameplay
 	 * Broad coverage, Blueprint-friendly.
 	 * Slightly slower due to reflection lookups; still acceptable for general use.
 	 */
-	auto* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(Target);
+
+	auto* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 	if(!TargetASC) return;
 
 	check(GameplayEffectClass);

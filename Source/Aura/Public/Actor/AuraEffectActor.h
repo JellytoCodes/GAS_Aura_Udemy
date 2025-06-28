@@ -18,35 +18,52 @@ protected :
 	virtual void BeginPlay() override;
 
 	UFUNCTION(BlueprintCallable)
-	void ApplyEffectToTarget(AActor* Target, TSubclassOf<UGameplayEffect> GameplayEffectClass);
+	void ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass);
 
-	UPROPERTY(EditAnywhere, Category = "Applied Effects")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	TSubclassOf<UGameplayEffect> InstantGameplayEffectClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
+	TSubclassOf<UGameplayEffect> DurationGameplayEffectClass;
 	
 };
 
 /** Note.
- *  Gameplay Effects
- *   - Data only
- *   - Dont's subclass UGameplayEffect
- *   - Change Attributes through : Modifiers, Executions
+ *  **Gameplay Effects**
+ *    1) Data only
+ *    2) Dont's subclass UGameplayEffect
+ *    3) Change Attributes through : Modifiers, Executions
  * 
- *  Modifier Op
- *   - Add, Multiply, Divide, Override
+ *   - Modifier Op : 
+ *    1) Add, Multiply, Divide, Override
  * 
- *  Magnitude Calculation Type
- *   - Scalable Float, Attribute Based
- *   - Custom Calculation Class (MMC), Set by Caller
+ *   - Magnitude Calculation Type :
+ *    1) Scalable Float, Attribute Based
+ *    2) Custom Calculation Class (MMC), Set by Caller
  * 
- *  Executions
- *   - GameplayEffect Execution Calculation
+ *   - Executions :
+ *    1) GameplayEffect Execution Calculation
  * 
- *  Duration Policy
- *   - Instant, Has Duration, Infinite
+ *   - Duration Policy :
+ *    1) Instant, Has Duration, Infinite
  *   
- *  Stacking
- *   - Add Gameplay Tags
- *   - Grant Abilities
+ *   - Stacking
+ *    1) Add Gameplay Tags
+ *    2) Grant Abilities
  * 
- *  Gameplay Effect Spec
+ *  **Periodic Gameplay Effects**
+ *   - Instant :
+ *    1) Permanent change to the Base Value
+ *  
+ *   - Duration & Infinite
+ *    1) Change Current Value
+ *    2) Undone if/when the effect is removed
+ * 
+ *   - Periodic
+ *    1) Treated like instant - permanently change the Base Value
+ * 
+ *  **Stacking**
+ *   - Aggregate by Source
+ *     
+ *   - Aggregate by Target
  */
