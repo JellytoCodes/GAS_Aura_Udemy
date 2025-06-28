@@ -73,6 +73,9 @@ protected :
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	TArray<FAuraGameplayEffectParams> AuraGameplayEffectParams;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
+	float ActorLevel = 1.f;
 };
 
 /** Note.
