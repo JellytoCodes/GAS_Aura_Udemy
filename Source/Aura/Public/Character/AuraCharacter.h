@@ -22,5 +22,6 @@ private :
 	UPROPERTY(EditAnywhere, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 
-	void InitAbilityActorInfo();
+	virtual void InitAbilityActorInfo() override;
+	
 };

@@ -23,3 +23,5 @@ void AAuraCharacterBase::BeginPlay()
 	
 }
 
+void AAuraCharacterBase::InitAbilityActorInfo() { /** Override Function */ }
+

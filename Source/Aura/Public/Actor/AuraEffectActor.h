@@ -78,10 +78,10 @@ protected :
 	float ActorLevel = 1.f;
 };
 
-/** Note.
+/** Note 1.
  *  **Gameplay Effects**
  *    1) Data only
- *    2) Dont's subclass UGameplayEffect
+ *    2) Don't subclass UGameplayEffect
  *    3) Change Attributes through : Modifiers, Executions
  * 
  *   - Modifier Op : 
@@ -100,7 +100,9 @@ protected :
  *   - Stacking
  *    1) Add Gameplay Tags
  *    2) Grant Abilities
- * 
+ */
+
+/** Note 2.
  *  **Periodic Gameplay Effects**
  *   - Instant :
  *    1) Permanent change to the Base Value
@@ -116,4 +118,17 @@ protected :
  *   - Aggregate by Source
  *     
  *   - Aggregate by Target
+ */
+
+/** Note 3.
+ *   ** Gameplay Tags **
+ *    - Gameplay Tag
+ *     1) Gameplay Tag Manager
+ *     2) Gameplay Tag Container
+ *
+ *    - IGameplayTagAssetInterface
+ *     1) GetOwnedGameplayTags
+ *     2) HasMatchingGameplayTag
+ *     3) HasAllMatchingGameplayTags
+ *     4) HasAnyMatchingGameplayTags
  */

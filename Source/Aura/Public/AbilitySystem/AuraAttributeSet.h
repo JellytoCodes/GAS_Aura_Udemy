@@ -14,7 +14,7 @@ class UAbilitySystemComponent;
 /** ATTRIBUTE_ACCESSORS Description
  *   This defines a set of helper functions for accessing and initializing attributes, 
  *   to avoid having to manually write these functions.
- *   It would creates the following functions, for attribute Health
+ *   It would Create's the following functions, for attribute Health
  *
  *   static FGameplayAttribute UMyHealthSet::GetHealthAttribute();
  *	 FORCEINLINE float UMyHealthSet::GetHealth() const;
@@ -65,8 +65,6 @@ struct FEffectProperties
 
 	UPROPERTY()
 	ACharacter* SourceCharacter = nullptr;
-
-	
 
 };
 
