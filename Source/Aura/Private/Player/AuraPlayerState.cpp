@@ -3,6 +3,10 @@
 
 /** ---------------------------------------------- */
 
+#include "Net/UnrealNetwork.h"
+
+/** ---------------------------------------------- */
+
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 
@@ -24,6 +28,7 @@ AAuraPlayerState::AAuraPlayerState()
 	 *     Gameplay Cues and Gameplay Tags replicated to all clients.
 	 * 
 	 *  Replication Mode : Minimal
+	 *  
 	 *   - Use Case : Multiplayer, AI-Controlled 
 	 *   - Description : Gameplay Effects are not replicated.
 	 *     Gameplay Cues and Gameplay Tags replicated to all clients.
@@ -40,8 +45,20 @@ AAuraPlayerState::AAuraPlayerState()
 	NetUpdateFrequency = 100.f;
 }
 
+void AAuraPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	//DOREPLIFTIME()
+}
+
 
 UAbilitySystemComponent* AAuraPlayerState::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
+}
+
+void AAuraPlayerState::OnRep_Level(int32 OldLevel)
+{
+
 }

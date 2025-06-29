@@ -103,7 +103,7 @@ protected :
  */
 
 /** Note 2.
- *  **Periodic Gameplay Effects**
+ *  ** Periodic Gameplay Effects **
  *   - Instant :
  *    1) Permanent change to the Base Value
  *  
@@ -114,7 +114,7 @@ protected :
  *   - Periodic
  *    1) Treated like instant - permanently change the Base Value
  * 
- *  **Stacking**
+ *  ** Stacking **
  *   - Aggregate by Source
  *     
  *   - Aggregate by Target
@@ -131,4 +131,18 @@ protected :
  *     2) HasMatchingGameplayTag
  *     3) HasAllMatchingGameplayTags
  *     4) HasAnyMatchingGameplayTags
+ */
+
+/** Note 4.
+ *   ** Attribute Based Modifiers **
+ *    - Coefficient(C)
+ *    - PreMultiply Additive Value(Pre)
+ *    - Post Multiply Additive Value(Post)
+ *
+ *    (C x (Backing Attribute Value + pre)) + post
+ */
+
+/** Note 5.
+ *   ** Custom Calculation **
+ *    Modifier Magnitude Calculation (MMC)
  */
