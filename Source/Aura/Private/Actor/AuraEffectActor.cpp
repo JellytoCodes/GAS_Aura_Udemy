@@ -64,7 +64,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, FAuraGameplayEff
 	if(bIsInfinite && InGameplayEffectParams.EffectRemovalPolicy == EEffectRemovalPolicy::RemoveOnEndOverlap)
 	{
 		ActiveEffectHandles.Add(ActiveEffectHandle, TargetASC);
-	
+	}
 }
 
 void AAuraEffectActor::OnOverlap(AActor *TargetActor)
