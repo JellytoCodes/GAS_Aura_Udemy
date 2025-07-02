@@ -22,7 +22,7 @@ AAuraCharacter::AAuraCharacter()
 	/** Player Camera Setup */
 	SpringCamera = CreateDefaultSubobject<USpringArmComponent>("SpringCamera");
 	SpringCamera->SetupAttachment(RootComponent);
-	SpringCamera->TargetArmLength = 750;
+	SpringCamera->TargetArmLength = 800;
 	SpringCamera->SetRelativeRotation(FRotator(-45.f, 0.f, 0.f));
 	SpringCamera->bUsePawnControlRotation = false;
 	SpringCamera->bEnableCameraLag = true;
@@ -51,7 +51,7 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 
 	// Init ability actor info for the Server
 	InitAbilityActorInfo();
-	
+	AddCharacterAbilities();
 }
 
 void AAuraCharacter::OnRep_PlayerState()
