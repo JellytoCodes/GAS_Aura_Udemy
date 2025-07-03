@@ -1,8 +1,5 @@
 
 #include "Character/AuraCharacter.h"
-
-/** ---------------------------------------------- */
-
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"

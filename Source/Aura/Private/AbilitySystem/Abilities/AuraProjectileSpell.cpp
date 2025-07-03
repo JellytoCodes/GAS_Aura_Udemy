@@ -1,15 +1,11 @@
 
 #include "AbilitySystem/Abilities/AuraProjectileSpell.h"
-
-/** ---------------------------------------------- */
-
-
-
-/** ---------------------------------------------- */
-
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
 #include "Abilities/Tasks/AbilityTask_PlayMontageAndWait.h"
+
+/** ---------------------------------------------- */
+
 #include "Actor/AuraProjectile.h"
 #include "Interaction/CombatInterface.h"
 

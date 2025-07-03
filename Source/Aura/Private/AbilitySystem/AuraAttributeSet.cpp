@@ -1,8 +1,5 @@
 
 #include "AbilitySystem/AuraAttributeSet.h"
-
-/** ---------------------------------------------- */
-
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/Character.h"
 #include "GameplayEffectExtension.h"

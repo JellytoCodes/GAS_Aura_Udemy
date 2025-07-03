@@ -1,8 +1,5 @@
 
 #include "UI/HUD/AuraHUD.h"
-
-/** ---------------------------------------------- */
-
 #include "UI/Widget/AuraUserWidget.h"
 #include "UI/WidgetController/OverlayWidgetController.h"
 #include "UI/WidgetController/AttributeMenuWidgetController.h"
