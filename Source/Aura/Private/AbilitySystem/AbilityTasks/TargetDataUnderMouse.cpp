@@ -10,7 +10,6 @@
 UTargetDataUnderMouse* UTargetDataUnderMouse::CreateTargetDataUnderMouse(UGameplayAbility* OwningAbility)
 {
 	UTargetDataUnderMouse* MyObj = NewAbilityTask<UTargetDataUnderMouse>(OwningAbility);
-
 	return MyObj;
 }
 
@@ -55,9 +54,17 @@ void UTargetDataUnderMouse::SendMouseCursorData()
 	{
 		ValidData.Broadcast(DataHandle);
 	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ERROR!"));
+	}
 }
 
 void UTargetDataUnderMouse::OnTargetDataReplicatedCallback(const FGameplayAbilityTargetDataHandle& DataHandle, FGameplayTag ActivationTag)
 {
 	AbilitySystemComponent->ConsumeClientReplicatedTargetData(GetAbilitySpecHandle(), GetActivationPredictionKey());
+	if (ShouldBroadcastAbilityTaskDelegates())
+	{
+		ValidData.Broadcast((DataHandle));
+	}
 }
