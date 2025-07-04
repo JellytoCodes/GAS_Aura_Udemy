@@ -15,7 +15,7 @@ public :
 	virtual void Execute_Implementation(const FGameplayEffectCustomExecutionParameters& ExecutionParams, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const override;
 
 private :
-	float InitCapturedAttributeMagnitude(const FGameplayEffectCustomExecutionParameters& ExecutionParams, const FGameplayEffectAttributeCaptureDefinition& CaptureDefinition, FAggregatorEvaluateParameters& EvaluateParameters) const;
+	float GetCapturedMagnitude(const FGameplayEffectCustomExecutionParameters& ExecutionParams, const FGameplayEffectAttributeCaptureDefinition& CaptureDefinition, const FAggregatorEvaluateParameters& EvaluateParameters) const;
 };
 
 /** Note. Execution Calculation
