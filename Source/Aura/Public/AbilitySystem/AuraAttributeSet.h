@@ -220,8 +220,10 @@ public :
 
 private :
 	void SetEffectProperties(const FGameplayEffectModCallbackData &Data, FEffectProperties& Props) const;
-
+	void ShowFloatingText(const FEffectProperties& Props, float Damage);
 };
+
+
 
 /** Note.
  *   Prediction : The client doesn't need to wait for the server's permission to change a value.
