@@ -29,6 +29,7 @@ public:
 
 	UFUNCTION(NetMulticast, Reliable)
 	virtual void MulticastHandleDeath();
+
 protected:
 	virtual void BeginPlay() override;
 

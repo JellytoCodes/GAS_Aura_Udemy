@@ -37,6 +37,7 @@ class UAbilitySystemComponent;
 //typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFuncPtr;
 template <class T>
 using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
+
 /** ---------------------------------------------- */
 
 USTRUCT(BlueprintType)
@@ -71,7 +72,6 @@ struct FEffectProperties
 
 	UPROPERTY()
 	ACharacter* SourceCharacter = nullptr;
-
 };
 
 /** ---------------------------------------------- */
@@ -216,14 +216,11 @@ public :
 
 	UFUNCTION()
 	void OnRep_ManaRegeneration(const FGameplayAttributeData& OldManaRegeneration) const;
-		
 
 private :
 	void SetEffectProperties(const FGameplayEffectModCallbackData &Data, FEffectProperties& Props) const;
 	void ShowFloatingText(const FEffectProperties& Props, float Damage);
 };
-
-
 
 /** Note.
  *   Prediction : The client doesn't need to wait for the server's permission to change a value.
