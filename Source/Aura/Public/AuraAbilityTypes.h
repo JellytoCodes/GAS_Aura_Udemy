@@ -31,6 +31,7 @@ protected :
 	UPROPERTY()
 	bool bIsCriticalHit = false;
 
+	
 };
 
 /** Note. NetSerialize
