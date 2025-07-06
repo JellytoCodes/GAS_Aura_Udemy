@@ -35,9 +35,6 @@ struct FAuraGameplayEffectParams
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool bDestroyOnEffectRemoval = false;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UGameplayEffect> GameplayEffectClass = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -70,6 +67,13 @@ protected :
 	void OnEndOverlap(AActor* TargetActor);
 
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
+
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Applied Effects")
+	bool bDestroyOnEffectApplication = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Applied Effects")
+	bool bApplyEffectsToEnemies = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	TArray<FAuraGameplayEffectParams> AuraGameplayEffectParams;

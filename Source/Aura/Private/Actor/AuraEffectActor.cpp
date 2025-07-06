@@ -46,6 +46,8 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, FAuraGameplayEff
 	 * Broad coverage, Blueprint-friendly.
 	 * Slightly slower due to reflection lookups; still acceptable for general use.
 	 */
+	
+	if (TargetActor->ActorHasTag(FName("Enemy")) && !bApplyEffectsToEnemies) return;
 
 	auto* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 	if(!TargetASC) return;
@@ -62,10 +64,17 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, FAuraGameplayEff
 	{
 		ActiveEffectHandles.Add(ActiveEffectHandle, TargetASC);
 	}
+
+	if (bDestroyOnEffectApplication && !bIsInfinite)
+	{
+		Destroy();
+	}
 }
 
 void AAuraEffectActor::OnOverlap(AActor *TargetActor)
 {
+	if (TargetActor->ActorHasTag(FName("Enemy")) && !bApplyEffectsToEnemies) return;
+
 	for(int i = 0 ; i < AuraGameplayEffectParams.Num() ; i++)
 	{
 		if(AuraGameplayEffectParams[i].EffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
@@ -76,7 +85,9 @@ void AAuraEffectActor::OnOverlap(AActor *TargetActor)
 }
 
 void AAuraEffectActor::OnEndOverlap(AActor *TargetActor)
-{	
+{
+	if (TargetActor->ActorHasTag(FName("Enemy")) && !bApplyEffectsToEnemies) return;
+
 	for(int i = 0 ; i < AuraGameplayEffectParams.Num() ; i++)
 	{
 		if(AuraGameplayEffectParams[i].EffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
