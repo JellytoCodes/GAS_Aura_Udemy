@@ -86,8 +86,6 @@ void AAuraEffectActor::OnOverlap(AActor *TargetActor)
 
 void AAuraEffectActor::OnEndOverlap(AActor *TargetActor)
 {
-	if (TargetActor->ActorHasTag(FName("Enemy")) && !bApplyEffectsToEnemies) return;
-
 	for(int i = 0 ; i < AuraGameplayEffectParams.Num() ; i++)
 	{
 		if(AuraGameplayEffectParams[i].EffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
