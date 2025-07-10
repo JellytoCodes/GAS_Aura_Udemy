@@ -203,7 +203,7 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 				IPlayerInterface::Execute_AddToSpellPoints(Props.SourceCharacter, SpellPointsReward);
 
 				bTopOffHealth = true;
-				bTopOffMana = true;
+				bTopOffHealth = true;
 
 				IPlayerInterface::Execute_LevelUp(Props.SourceCharacter);
 			}
