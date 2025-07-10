@@ -147,11 +147,11 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 {
 	if (!InputTag.MatchesTag(FAuraGameplayTags::Get().InputTag_LMB))
 	{
-		if (GetASC()) GetASC()->AbilityInputTagRealesed(InputTag);
+		if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
 		return;
 	}
 
-	if (GetASC()) GetASC()->AbilityInputTagRealesed(InputTag);
+	if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
 
 	if (!bTargeting && !bShiftKeyDown)
 	{

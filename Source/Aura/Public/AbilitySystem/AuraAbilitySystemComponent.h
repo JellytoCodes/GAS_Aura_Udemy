@@ -4,7 +4,11 @@
 #include "AbilitySystemComponent.h"
 #include "AuraAbilitySystemComponent.generated.h"
 
+class UAuraAbilitySystemComponent;
+
 DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags, const FGameplayTagContainer& /*Asset Tags*/);
+DECLARE_MULTICAST_DELEGATE_OneParam(FAbilitiesGiven, UAuraAbilitySystemComponent*);
+DECLARE_DELEGATE_OneParam(FForEachAbility, const FGameplayAbilitySpec&);
 
 UCLASS()
 class AURA_API UAuraAbilitySystemComponent : public UAbilitySystemComponent
@@ -15,14 +19,21 @@ public :
 	void AbilityActorInfoSet();
 
 	FEffectAssetTags EffectAssetTags;
+	FAbilitiesGiven AbilitiesGivenDelegate;
 
 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities);
+	bool bStartupAbilitiesGiven = false;
 
-	void AbilityInputTagPressed(const FGameplayTag& InputTag);
-	void AbilityInputTagRealesed(const FGameplayTag& InputTag);
+	void AbilityInputTagReleased(const FGameplayTag& InputTag);
 	void AbilityInputTagHeld(const FGameplayTag& InputTag);
+	void ForEachAbility(const FForEachAbility& Delegate);
 
+	static FGameplayTag GetAbilityTagFromSpec(const FGameplayAbilitySpec& AbilitySpec);
+	FGameplayTag GetInputTagFromSpec(const FGameplayAbilitySpec& AbilitySpec);
 protected :
+
+	virtual void OnRep_ActivateAbilities() override;
+
 	UFUNCTION(Client, Reliable)
 	void ClineEffectApplied(UAbilitySystemComponent* AbilitySystemComponent, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle);
 
