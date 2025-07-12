@@ -205,10 +205,6 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 			FName("Cooldown.Fire.FireBolt"), 
 			FString("FireBolt Cooldown Tag"));
 
-	GameplayTags.Cooldown_Lighting_Electrocute = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Cooldown.Lighting.Electrocute"), 
-			FString("Electrocute Cooldown Tag"));
-
 	/** Combat Socket */
 	GameplayTags.CombatSocket_Weapon = UGameplayTagsManager::Get().AddNativeGameplayTag(
 			FName("CombatSocket.Weapon"), 

@@ -73,7 +73,6 @@ public :
 	FGameplayTag Abilities_Lighting_Electrocute;
 
 	FGameplayTag Cooldown_Fire_FireBolt;
-	FGameplayTag Cooldown_Lighting_Electrocute;
 
 	FGameplayTag CombatSocket_Weapon;
 	FGameplayTag CombatSocket_RightHand;
