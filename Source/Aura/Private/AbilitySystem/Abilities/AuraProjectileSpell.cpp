@@ -2,7 +2,6 @@
 #include "AbilitySystem/Abilities/AuraProjectileSpell.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
-#include "Abilities/Tasks/AbilityTask_PlayMontageAndWait.h"
 
 /** ---------------------------------------------- */
 
@@ -11,6 +10,8 @@
 #include "AuraGameplayTags.h"
 
 /** ---------------------------------------------- */
+
+
 
 void UAuraProjectileSpell::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {

@@ -13,8 +13,15 @@ public :
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	FGameplayTag StartupInputTag;
 
+	virtual FString GetDescription(int32 Level);
+	virtual FString GetNextLevelDescription(int32 Level);
+	static FString GetLockedDescription(int32 Level);
 
+protected :
+	float GetManaCost(float InLevel = 1.f) const;
+	float GetCooldown(float InLevel = 1.f) const;
 };
+
 
 /** Note 1. Ability Tags
  *   1) Ability Tags : This ability has these tags
