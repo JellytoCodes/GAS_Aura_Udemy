@@ -280,6 +280,23 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 			FName("Effects.HitReact"), 
 			FString("Tag granted when Hit Reacting"));
 
+	/** Player Tags */
+	GameplayTags.Player_Block_CursorTrace = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Player.Block.CursorTrace"), 
+			FString("Block tracing under the cursor"));
+
+	GameplayTags.Player_Block_InputHeld = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Player.Block.InputHeld"), 
+			FString("Block Input Held callback for input"));
+
+	GameplayTags.Player_Block_InputPressed = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Player.Block.InputPressed"), 
+			FString("Block Input Pressed callback for input"));
+
+	GameplayTags.Player_Block_InputReleased = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Player.Block.InputReleased"), 
+			FString("Block Input Released callback for input"));
+
 	/** Map of Damage Types to Resistance*/
 	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Fire, GameplayTags.Attributes_Resistance_Fire);
 	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Lightning, GameplayTags.Attributes_Resistance_Lightning);
