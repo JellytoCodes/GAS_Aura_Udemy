@@ -7,11 +7,8 @@
 
 #include "Actor/AuraProjectile.h"
 #include "Interaction/CombatInterface.h"
-#include "AuraGameplayTags.h"
 
 /** ---------------------------------------------- */
-
-
 
 void UAuraProjectileSpell::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {
