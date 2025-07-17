@@ -7,7 +7,6 @@
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystem/Abilities/AuraGameplayAbility.h"
 #include "AbilitySystem/Data/AbilityInfo.h"
-#include "Engine/Engine.h"
 #include "Interaction/PlayerInterface.h"
 
 /** ---------------------------------------------- */
