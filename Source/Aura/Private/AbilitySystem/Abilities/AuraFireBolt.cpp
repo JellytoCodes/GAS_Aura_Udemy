@@ -22,7 +22,7 @@ FString UAuraFireBolt::GetDescription(int32 Level)
 			//Cooldown
 			"<Small>Cooldown : </><Cooldown>%.1f</>\n\n"
 
-			"<Default>Launches a bolt of fire, exploding on impact and dealing : </>"
+			"<Default>Launches a bolt of fire, exploding on impact and dealing </>"
 			
 			//Damage
 			"<Damage> %d </><Default> fire damage with a chance to burn </>"),
