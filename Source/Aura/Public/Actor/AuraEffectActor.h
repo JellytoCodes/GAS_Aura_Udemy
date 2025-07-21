@@ -59,10 +59,10 @@ public :
 protected :
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadWrite)
 	FVector CalculatedLocation;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadWrite)
 	FRotator CalculatedRotation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup Movement")
@@ -84,10 +84,10 @@ protected :
 	FVector InitialLocation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup Movement")
-	float SineAmplitude = 1.f;
+	float SineAmplitude = 8.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup Movement")
-	float SinePeriodConstant = 1; //2 * PI
+	float SinePeriodConstant = 3.f; 
 
 	UFUNCTION(BlueprintCallable)
 	void ApplyEffectToTarget(AActor* TargetActor, FAuraGameplayEffectParams& InGameplayEffectParams);
