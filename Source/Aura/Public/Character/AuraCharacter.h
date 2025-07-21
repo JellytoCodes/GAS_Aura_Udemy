@@ -18,7 +18,7 @@ public :
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
 	virtual void OnRep_Stunned() override;
-	virtual void OnRep_Burned();
+	virtual void OnRep_Burned() override;
 
 	/** Player Interface */
 	virtual void AddToXP_Implementation(int InXP) override;
@@ -44,6 +44,7 @@ public :
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<UNiagaraComponent> LevelUpNiagaraComponent;
 
+	void LoadProgress();
 
 private :
 	UPROPERTY(EditAnywhere, Category = "Camera", meta = (AllowPrivateAccess = "true"))

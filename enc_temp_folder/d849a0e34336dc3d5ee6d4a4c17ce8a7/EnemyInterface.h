@@ -16,6 +16,8 @@ class AURA_API IEnemyInterface
 	GENERATED_BODY()
 
 public:
+
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void SetCombatTarget(AActor* InCombatTarget);
 

@@ -30,6 +30,8 @@ public :
 	ULoadScreenSaveGame* RetrieveInGameSaveData() const;
 	void SaveInGameProgressData(ULoadScreenSaveGame* SaveObject) const;
 
+	void SaveWorldState(UWorld* World) const;
+	void LoadWorldState(UWorld* World) const;
 	void TravelToMap(const UMVVM_LoadSlot* Slot);
 
 	UPROPERTY(EditDefaultsOnly)
