@@ -33,4 +33,5 @@
  - 강의 중 정답을 공개하지 않는 Optinal Quest 진행 기록 폴더
 
 ## 수강 완료
+2025.06.23 ~ 2025.07.22
 ![UC-3c909b3d-dc4d-46a6-b4a3-44fe04c84c61](https://github.com/user-attachments/assets/f8bd9381-d998-4f00-8b42-857c5c9e6365)
