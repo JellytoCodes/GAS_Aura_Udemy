@@ -1,6 +1,8 @@
 # GameAbilitySystem_Aura
 >Game Ability System 기반의 확장형 게임 구조 설계 학습  
 >C++/BP 경계 설정 기준 정립 및 품질 코드 작성, 유지보수•확장성 확보  
+>강의 : Unreal Engine 5 - Gameplay Ability System - Top Down RPG  
+>Link : https://www.udemy.com/course/unreal-engine-5-gas-top-down-rpg/  
 ---
 <br>
 
